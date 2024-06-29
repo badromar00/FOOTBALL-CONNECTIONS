@@ -146,3 +146,45 @@
 .message-animate {
   animation: fadeIn 1s ease-out;
 }
+
+/* Existing styles */
+
+@media (max-width: 768px) {
+  .App {
+    padding: 10px;
+    max-width: 90%;
+  }
+
+  .word-grid {
+    grid-template-columns: repeat(3, 1fr); /* Adjust for smaller screens */
+  }
+
+  .word-button, .controls button {
+    padding: 10px 5px;
+    font-size: 14px; /* Slightly smaller text */
+  }
+
+  .mistake-dot {
+    width: 10px;
+    height: 10px; /* Smaller mistake dots */
+  }
+
+  .controls {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .word-grid {
+    grid-template-columns: repeat(2, 1fr); /* Further adjust for very small screens */
+  }
+
+  .controls button {
+    padding: 12px 10px; /* Larger touch targets */
+  }
+
+  .message, .completed-group h3, .next-puzzle h3 {
+    font-size: 1em; /* Adjust font size for readability */
+  }
+}
