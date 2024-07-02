@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Confetti from 'react-confetti';
 import './index.css';
 
 
@@ -33,7 +34,7 @@ const [showAnimation, setShowAnimation] = useState(false);
 const [showHowToPlay, setShowHowToPlay] = useState(false);
 const [showCompletionMessage, setShowCompletionMessage] = useState(false);
 const [showNextTimeMessage, setShowNextTimeMessage] = useState(false);
-
+const [showConfetti, setShowConfetti] = useState(false);
 
 
 
@@ -139,10 +140,11 @@ const checkGroup = () => {
      // Delay showing completion message by 0.5 seconds
      setTimeout(() => {
        setShowCompletionMessage(true);
-      
+       setShowConfetti(true); // Start the confetti
        // Hide completion message after 3 seconds
        setTimeout(() => {
          setShowCompletionMessage(false);
+         setShowConfetti(false); // Stop the confetti
         
          // Transition to game over screen
          setShowAnimation(true);
@@ -173,7 +175,11 @@ const checkGroup = () => {
      setMessage("Incorrect. Try again!");
      setSelectedWords([]); // Clear selected words only if not a close match
      if (mistakes - 1 === 0) {
-       setGameOver(true);
+       setShowNextTimeMessage(true);
+       setTimeout(() => {
+        setShowNextTimeMessage(false);
+        setGameOver(true);
+      }, 2000);
      }
    }
  }
@@ -325,6 +331,7 @@ const renderHowToPlay = () => (
 
 return (
  <div className="App">
+   {showConfetti && <Confetti />}
    <h1>Football Connections ⚽️</h1>
    <h2>Create four groups of four!</h2>
    {gameOver ? renderGameOver() : renderGameBoard()}
