@@ -182,13 +182,13 @@
  
  
   .word-grid {
-    grid-template-columns: repeat(3, 1fr); /* Adjust for smaller screens */
+    gap: 5px; /* Adjust for smaller screens */
   }
  
  
-  .word-button, .controls button {
+  .word-button {
     padding: 10px 5px;
-    font-size: 14px; /* Slightly smaller text */
+    font-size: 12px;
   }
  
  
@@ -207,14 +207,16 @@
  
  @media (max-width: 480px) {
   .word-grid {
-    grid-template-columns: repeat(2, 1fr); /* Further adjust for very small screens */
+    gap: 3px;
   }
- 
  
   .controls button {
     padding: 12px 10px; /* Larger touch targets */
   }
- 
+  .word-button {
+    padding: 8px 3px;
+    font-size: 10px; /* Even smaller font size for very small screens */
+  }
  
   .message, .completed-group h3, .next-puzzle h3 {
     font-size: 1em; /* Adjust font size for readability */
